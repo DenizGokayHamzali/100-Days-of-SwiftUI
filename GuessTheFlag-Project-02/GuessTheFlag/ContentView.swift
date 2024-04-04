@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  GuessTheFlag
-//
 //  Created by Deniz Gökay Hamzalı on 22.02.2024.
-//
 
 import SwiftUI
 
@@ -14,6 +9,10 @@ struct FlagImage: View {
         Image(countries)
             .clipShape(.capsule)
             .shadow(radius: 10)
+            .overlay(
+                Capsule()
+                    .stroke(.white, lineWidth: 3)
+            )
     }
 }
 
@@ -29,6 +28,9 @@ struct ContentView: View {
     @State private var tappedFlag = ""
     @State private var questionCount = 1
     @State private var gameFinished = false
+    
+    @State private var spinAmount = 0.0
+    @State private var tappedButtonIndex: Int?
     
     var body: some View {
         ZStack {
@@ -58,8 +60,12 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
-                        } label: {
+                        }
+                    label: {
                             FlagImage(countries: countries[number])
+                            .rotation3DEffect(.degrees(number == correctAnswer ? spinAmount : 0), axis: (x: 0, y: 1, z: 0))
+                            .opacity(tappedButtonIndex != nil && tappedButtonIndex != number ? 0.25 : 1)
+                            .scaleEffect(tappedButtonIndex != nil && tappedButtonIndex != number ? 0.75 : 1)
                         }
                     }
                 }
@@ -96,10 +102,15 @@ struct ContentView: View {
     }
     
     func flagTapped (_ number: Int) {
+        tappedButtonIndex = number
         if number == correctAnswer {
+            withAnimation(.easeIn(duration: 0.5)){
+                spinAmount += 360
+            }
             scoreTitle = "Correct"
             userScore += 1
             showingScore = true
+                
         } else {
             scoreTitle = "Wrong"
             userScore -= 1
@@ -118,6 +129,7 @@ struct ContentView: View {
             countries.shuffle()
             correctAnswer = Int.random(in: 0...2)
         }
+        tappedButtonIndex = nil
     }
     
     func resetGame() {
