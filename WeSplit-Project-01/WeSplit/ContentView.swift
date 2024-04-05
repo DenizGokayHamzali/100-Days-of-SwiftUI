@@ -35,6 +35,7 @@ struct ContentView: View {
                         Locale.current.currency?.identifier ?? "USD"))
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
+                        .foregroundColor(.purple)
                     
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<100) {
@@ -44,7 +45,7 @@ struct ContentView: View {
                     .pickerStyle(.navigationLink)
                 }
                 
-                Section("How much do you want to tip?") {
+                Section(header: Text("How much do you want to tip?").font(.headline).foregroundColor(.purple)) {
                     Picker("Tip percentage", selection: $tipPercentage) {
                         ForEach(0..<101) {
                             Text($0, format: .percent)
@@ -52,16 +53,19 @@ struct ContentView: View {
                     }
                     .pickerStyle(.navigationLink)
                 }
+                .textCase(nil)
                 
-                Section("Amount per person") {
+                Section(header: Text("Amount per person").font(.headline).foregroundColor(.purple)) {
                     Text(totalPerPerson, format: .currency(code:
                         Locale.current.currency?.identifier ?? "USD"))
                 }
+                .textCase(nil)
                 
-                Section("Total amount") {
+                Section(header: Text("Total amount").font(.headline).foregroundColor(.purple)) {
                     Text(totalAmount, format: .currency(code:
                         Locale.current.currency?.identifier ?? "USD"))
                 }
+                .textCase(nil)
             }
             .navigationTitle("WeSplit")
             .toolbar {
