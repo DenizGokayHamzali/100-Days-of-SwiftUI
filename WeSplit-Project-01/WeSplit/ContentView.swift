@@ -66,13 +66,24 @@ struct ContentView: View {
                         Locale.current.currency?.identifier ?? "USD"))
                 }
                 .textCase(nil)
-            }
-            .navigationTitle("WeSplit")
+            } 
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Spacer()
+                            Text("WeSplit").foregroundColor(.indigo).font(.title).fontWeight(.medium)
+                            Spacer()
+                        }
+                    }
+                }
             .toolbar {
                 if amountIsFocused {
                     Button("Done") {
                         amountIsFocused = false
                     }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.indigo)
                 }
             }
         }
