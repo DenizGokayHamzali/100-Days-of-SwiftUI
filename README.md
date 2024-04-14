@@ -16,3 +16,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/UnitConverter.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Project 2: GuessTheFlag](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/GuessTheFlag-Project-02) & [Day 20 - 22](https://www.hackingwithswift.com/100/swiftui/20)
+<div style="text-align: center;">
+  <img src="./Assets/GuessTheFlag.gif" width="250px"/>
+</div>
