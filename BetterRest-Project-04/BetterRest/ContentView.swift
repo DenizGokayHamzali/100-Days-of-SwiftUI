@@ -41,7 +41,7 @@ struct ContentView: View {
        
                 Section("Desired amount of sleep") {
                     Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in:
-                                4...12, step: 0.25)
+                                4...12, step: 0.5)
                 }
                 .font(.headline)
                 
