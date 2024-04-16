@@ -23,3 +23,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/GuessTheFlag.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Project 4: BetterRest](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/BetterRest-Project-04) & [Day 26 - 28](https://www.hackingwithswift.com/100/swiftui/26)
+<div style="text-align: center;">
+  <img src="./Assets/BetterRest.gif" width="250px"/>
+</div>
