@@ -20,7 +20,9 @@ struct ContentView: View {
                     HStack {
                         TextField("Enter your word", text: $newWord)
                             .textInputAutocapitalization(.never)
+                            .foregroundColor(.teal)
                         Text("Your score is \(userScore)")
+                            .foregroundStyle(.green)
                     }
                 }
                 
@@ -28,22 +30,31 @@ struct ContentView: View {
                     ForEach(usedWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
+                                .foregroundColor(.mint)
                             Text(word)
+                                .foregroundStyle(.green)
                         }
                     }
                 }
             }
-            .navigationTitle(rootWord)
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
             .alert(errorTitle, isPresented: $showingError) { } message: {
                 Text(errorMessage)
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button("Change the word", action: startGame)
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text(rootWord).foregroundStyle(.mint).font(.largeTitle).fontWeight(.medium)
+                        Spacer()
+                        Button("Change the word", action: startGame)
+                            .buttonStyle(.borderedProminent)
+                            .tint(.teal)
+                            .font(.caption)
+                    }
+                }
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.indigo)
         }
     }
     
