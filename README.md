@@ -37,3 +37,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/BetterRest.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Project 5: WordScramble](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/WordScramble-Project-05) & [Day 29 - 31](https://www.hackingwithswift.com/100/swiftui/29)
+<div style="text-align: center;">
+  <img src="./Assets/WordScramble.gif" width="250px"/>
+</div>
