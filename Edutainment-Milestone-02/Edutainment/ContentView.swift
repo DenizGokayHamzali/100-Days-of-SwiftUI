@@ -181,6 +181,7 @@ struct ContentView: View {
         selectedTable = 0
         gameFinished = false
         isGameActive = false
+        animationAmount = 1
     }
     
 }
