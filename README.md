@@ -44,3 +44,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/WordScramble.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Milestone 2: Edutainment](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/Edutainment-Milestone-02) & [Day 35](https://www.hackingwithswift.com/100/swiftui/35)
+<div style="text-align: center;">
+  <img src="./Assets/Edutainment.gif" width="250px"/>
+</div>
