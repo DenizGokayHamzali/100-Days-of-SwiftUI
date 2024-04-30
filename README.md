@@ -51,3 +51,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/Edutainment.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Project 7: iExpense](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/iExpense-Project-07) & [Day 36 - 38](https://www.hackingwithswift.com/100/swiftui/36)
+<div style="text-align: center;">
+  <img src="./Assets/iExpense.gif" width="250px"/>
+</div>
