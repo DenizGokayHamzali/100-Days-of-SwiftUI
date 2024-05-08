@@ -30,6 +30,7 @@ struct CrewView: View {
                                 Text(crewMember.role)
                                     .foregroundStyle(.white.opacity(0.5))
                             }
+                            .fontWeight((crewMember.role == "Command Pilot" || crewMember.role == "Commander") ? .bold : .regular)
                         }
                         .padding(.horizontal)
                     }
