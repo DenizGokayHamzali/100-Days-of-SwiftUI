@@ -58,3 +58,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 <div style="text-align: center;">
   <img src="./Assets/iExpense.gif" width="250px"/>
 </div>
+
+#
+
+- ### [Project 8: Moonshot](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/Moonshot-Project-08) & [Day 39 - 42](https://www.hackingwithswift.com/100/swiftui/39)
+<div style="text-align: center;">
+  <img src="./Assets/Moonshot.gif" width="250px"/>
+</div>
