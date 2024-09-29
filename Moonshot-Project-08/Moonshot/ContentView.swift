@@ -13,22 +13,20 @@ struct ContentView: View {
     @State private var listMode = false
     
     var body: some View {
-        Group {
-            if !listMode {
-                NavigationStack {
+        NavigationStack {
+            Group {
+                if !listMode {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(missions) { mission in
-                                NavigationLink {
-                                    MissionView(mission: mission, astronauts: astronauts)
-                                } label : {
+                                NavigationLink(value: mission) {
                                     VStack {
                                         Image(mission.image)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 100, height: 100)
                                             .padding()
-
+                                        
                                         VStack {
                                             Text(mission.displayName)
                                                 .font(.headline)
@@ -64,13 +62,9 @@ struct ContentView: View {
                             .buttonStyle(.borderedProminent)
                         }
                     }
-                }
-            } else {
-                NavigationStack {
+                } else {
                     List(missions) { mission in
-                        NavigationLink {
-                            MissionView(mission: mission, astronauts: astronauts)
-                        } label: {
+                        NavigationLink(value: mission) {
                             HStack {
                                 Image(mission.image)
                                     .resizable()
@@ -115,6 +109,12 @@ struct ContentView: View {
                     }
                     .listStyle(.plain)
                 }
+            }
+            .navigationDestination(for: Mission.self) { mission in
+                MissionView(mission: mission, astronauts: astronauts)
+            }
+            .navigationDestination(for: Astronaut.self) { astronaut in
+                AstronautView(astronaut: astronaut)
             }
         }
     }

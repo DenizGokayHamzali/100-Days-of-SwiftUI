@@ -6,21 +6,19 @@ struct AstronautView: View {
     let astronaut: Astronaut
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    Image(astronaut.id)
-                        .resizable()
-                        .scaledToFit()
-                    
-                    Text(astronaut.description)
-                        .padding()
-                }
+        ScrollView {
+            VStack {
+                Image(astronaut.id)
+                    .resizable()
+                    .scaledToFit()
+                
+                Text(astronaut.description)
+                    .padding()
             }
-            .background(.darkBackground)
-            .navigationTitle(astronaut.name)
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .background(.darkBackground)
+        .navigationTitle(astronaut.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
