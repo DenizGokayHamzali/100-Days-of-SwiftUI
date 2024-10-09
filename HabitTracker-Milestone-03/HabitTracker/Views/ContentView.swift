@@ -7,14 +7,16 @@ struct ContentView: View {
     @State private var showingAddActivity = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(viewModel.activities) { activity in
-                VStack(alignment: .leading) {
-                    Text(activity.title)
-                        .font(.headline)
-                    Text("Completed \(activity.completionCount) times")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                NavigationLink(value: activity) {
+                    VStack(alignment: .leading) {
+                        Text(activity.title)
+                            .font(.headline)
+                        Text("Completed \(activity.completionCount) times")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             .navigationTitle("Habit Tracker")
@@ -27,10 +29,12 @@ struct ContentView: View {
                 AddActivityView(viewModel: viewModel)
             }
             .background(Color.gray.opacity(0.1))
+            .navigationDestination(for: Activity.self) { activity in
+                ActivityDetailView(activity: activity, viewModel: viewModel)
+            }
         }
     }
 }
-
 
 #Preview {
     ContentView()

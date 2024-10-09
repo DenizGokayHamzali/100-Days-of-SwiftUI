@@ -1,7 +1,7 @@
 //  Created by Deniz Gökay Hamzalı on 6.10.2024.
 import Foundation
 
-struct Activity: Identifiable, Codable, Equatable {
+struct Activity: Identifiable, Codable, Equatable, Hashable {
     let id: UUID
     var title: String
     var description: String
