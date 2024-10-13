@@ -8,30 +8,26 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.activities) { activity in
-                NavigationLink(value: activity) {
-                    VStack(alignment: .leading) {
-                        Text(activity.title)
-                            .font(.headline)
-                        Text("Completed \(activity.completionCount) times")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
+            ActivityListView(viewModel: viewModel)
+                .toolbar {
+                    Button(action: { showingAddActivity = true }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                            .foregroundStyle(.orange)
                     }
                 }
-            }
-            .navigationTitle("Habit Tracker")
-            .toolbar {
-                Button(action: { showingAddActivity = true }) {
-                    Image(systemName: "plus")
+                .fullScreenCover(isPresented: $showingAddActivity) {
+                    AddActivityView(viewModel: viewModel)
                 }
-            }
-            .sheet(isPresented: $showingAddActivity) {
-                AddActivityView(viewModel: viewModel)
-            }
-            .background(Color.gray.opacity(0.1))
-            .navigationDestination(for: Activity.self) { activity in
-                ActivityDetailView(activity: activity, viewModel: viewModel)
-            }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Habit Tracker")
+                            .foregroundStyle(.yellow)
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
+                }
         }
     }
 }

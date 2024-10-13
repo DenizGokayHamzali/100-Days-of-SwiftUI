@@ -10,20 +10,40 @@ struct AddActivityView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Title", text: $title)
-                TextField("Description", text: $description)
+                Section(header: Text("Activity Details")) {
+                    TextField("Title", text: $title)
+                    TextField("Description", text: $description)
+                }
             }
-            .navigationTitle("Add New Activity")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button("Save") {
-                    let newActivity = Activity(title: title, description: description)
-                    viewModel.addActivity(newActivity)
-                    dismiss()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        let newActivity = Activity(title: title, description: description)
+                        viewModel.addActivity(newActivity)
+                        dismiss()
+                    }
+                    .disabled(title.isEmpty || description.isEmpty)
+                    .tint(.orange)
+                    .buttonStyle(.borderedProminent)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel"){
+                        dismiss()
+                    }
+                    .tint(.orange)
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Add New Activity")
+                        .foregroundStyle(.yellow)
+                        .font(.title)
+                        .fontWeight(.bold)
                 }
             }
         }
     }
 }
+
 
 #Preview {
     let activities: ActivityViewModel = .init()
