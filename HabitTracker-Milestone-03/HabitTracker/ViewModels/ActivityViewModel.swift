@@ -14,6 +14,13 @@ class ActivityViewModel {
         saveActivities()
     }
     
+    func deleteActivity(_ activity: Activity) {
+        if let index = activities.firstIndex(of: activity) {
+            activities.remove(at: index)
+            saveActivities()
+        }
+    }
+    
     private func saveActivities() {
         if let encoded = try? JSONEncoder().encode(activities) {
             UserDefaults.standard.set(encoded, forKey: "Activities")

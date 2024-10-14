@@ -7,27 +7,47 @@ struct ActivityDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             Text(activity.title)
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .padding(.top, 40)
+                .foregroundStyle(.title)
+                .multilineTextAlignment(.center)
+            
             Text(activity.description)
                 .font(.body)
-                .foregroundColor(.secondary)
+                .foregroundColor(.description)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+        
             Text("Completed \(activity.completionCount) times")
                 .font(.headline)
+                .foregroundColor(.orange)
+                .padding(.top, 10)
+            
+            Spacer()
+            
             Button(action: {
                 viewModel.incrementCompletionCount(for: activity)
             }) {
                 Text("Complete")
+                    .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.accentColor)
+                    .background(Color.yellow)
                     .foregroundStyle(.white)
                     .cornerRadius(12)
-                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .shadow(radius: 10)
             }
+            .padding(.horizontal)
+            .padding(.bottom, 30)
+            
         }
-        .padding()
+        .padding(.top, 20)
+        .padding(.horizontal)
+        .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -37,7 +57,7 @@ struct ActivityDetailView: View {
                     .fontWeight(.bold)
             }
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel"){
+                Button("Cancel") {
                     dismiss()
                 }
                 .tint(.orange)
@@ -45,4 +65,10 @@ struct ActivityDetailView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
+}
+
+#Preview {
+    let sampleActivity = Activity(title: "Morning Yoga", description: "A calming yoga session to start the day.", completionCount: 3)
+    let viewModel = ActivityViewModel()
+    ActivityDetailView(activity: sampleActivity, viewModel: viewModel)
 }

@@ -11,12 +11,20 @@ struct ActivityListView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(activity.title)
                         .font(.headline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(Color.title)
+                        .padding(3)
                     Text("Completed \(activity.completionCount) times.")
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.description)
                 }
                 .padding(.vertical, 8)
+            }
+            .swipeActions {
+                Button(role: .destructive) {
+                    viewModel.deleteActivity(activity)
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
             }
         }
         .background(Color.gray.opacity(0.1))
