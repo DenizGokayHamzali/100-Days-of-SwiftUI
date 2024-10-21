@@ -4,6 +4,19 @@ import SwiftUI
 
 @Observable
 class Order: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        case _type = "type"
+        case _quantity = "quantity"
+        case _specialRequestEnabled = "specialRequestEnabled"
+        case _extraFrosting = "extraFrosting"
+        case _addSprinkles = "addSprinkles"
+        case _name = "name"
+        case _city = "city"
+        case _streetAddress = "streetAddress"
+        case _zip = "zip"
+    }
+    
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
     var type = 0 // Default vanilla.
@@ -27,10 +40,8 @@ class Order: Codable {
     var zip = ""
     
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-            return false
-        }
-        return true
+        let fields = [name, streetAddress, city, zip]
+        return !fields.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.contains { $0.isEmpty }
     }
     
     var cost: Decimal {
@@ -51,17 +62,5 @@ class Order: Codable {
         }
         
         return cost
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case _type = "type"
-        case _quantity = "quantity"
-        case _specialRequestEnabled = "specialRequestEnabled"
-        case _extraFrosting = "extraFrosting"
-        case _addSprinkles = "addSprinkles"
-        case _name = "name"
-        case _city = "city"
-        case _streetAddress = "streetAddress"
-        case _zip = "zip"
     }
 }

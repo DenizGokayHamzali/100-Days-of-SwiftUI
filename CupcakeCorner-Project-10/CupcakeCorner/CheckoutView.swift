@@ -35,7 +35,7 @@ struct CheckoutView: View {
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
         .alert("Thank you!", isPresented: $showingConfirmation) {
-            Button("OK") { }
+           // Button("OK") { } Don't need this actually.
         } message: {
             Text(confirmationMessage)
         }
@@ -51,9 +51,10 @@ struct CheckoutView: View {
         // Data over a network call.
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
-        request.setValue("applicaton/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         
+        // Making network request.
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             
@@ -65,7 +66,6 @@ struct CheckoutView: View {
         } catch {
             print("Checkout failed: \(error.localizedDescription)")
         }
-        
     }
 }
 
