@@ -4,22 +4,50 @@ import SwiftUI
 
 struct AddressView: View {
     @Bindable var order: Order
+    @State private var showingSaved = false
     
     var body: some View {
-        Form {
-            Section {
-                TextField("Name", text: $order.name)
-                TextField("Street Address", text: $order.streetAddress)
-                TextField("City", text: $order.city)
-                TextField("Zip", text: $order.zip)
-            }
+        ZStack {
+            Color(.systemGroupedBackground) // Arka plan rengini belirtiyoruz
+                .edgesIgnoringSafeArea(.all) // Kenarlara kadar uzatıyoruz
             
-            Section {
-                NavigationLink("Check out") {
-                    CheckoutView(order: order)
+            VStack {
+                Form {
+                    Section {
+                        TextField("Name", text: $order.name)
+                        TextField("Street Address", text: $order.streetAddress)
+                        TextField("City", text: $order.city)
+                        TextField("Zip", text: $order.zip)
+                    }
+                    
+                    Section {
+                        NavigationLink("Check out") {
+                            CheckoutView(order: order)
+                        }
+                    }
+                    .disabled(!(order.hasValidAddress))
+                }
+                
+                Button(action: {
+                    order.saveOrderAddress()
+                    showingSaved = true
+                }) {
+                    Text("Save Address")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
+                .padding(.bottom, 20) // Butonun alttan boşluğu
+                .alert("Thank you!", isPresented: $showingSaved) {
+                   // Button("OK") { } Don't need this actually.
+                } message: {
+                    Text("...")
                 }
             }
-            .disabled(!(order.hasValidAddress))
         }
         .navigationTitle("Delivery details")
         .navigationBarTitleDisplayMode(.inline)
@@ -29,4 +57,3 @@ struct AddressView: View {
 #Preview {
     AddressView(order: Order())
 }
-
