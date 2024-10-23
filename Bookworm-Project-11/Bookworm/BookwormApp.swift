@@ -1,7 +1,7 @@
 //  Created by Deniz Gökay Hamzalı on 23.10.2024.
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct BookwormApp: App {
@@ -9,6 +9,6 @@ struct BookwormApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Student.self)
+        .modelContainer(for: Book.self)
     }
 }
