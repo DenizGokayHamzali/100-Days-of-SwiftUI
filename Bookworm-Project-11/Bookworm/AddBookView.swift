@@ -12,7 +12,7 @@ struct AddBookView: View {
     @State private var genre = "Fantasy"
     @State private var review = ""
     
-    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Science Fiction", "Thriller"]
+    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "ScienceFiction", "Thriller"]
     
     @Environment(\.dismiss) var dismiss
     
