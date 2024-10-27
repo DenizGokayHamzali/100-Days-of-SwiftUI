@@ -10,6 +10,13 @@ struct DetailView: View {
     @Environment(\.dismiss) var dismiss
     @State private var showingDeleteAlert = false
     
+    private var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: book.date)
+    }
+    
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
@@ -29,6 +36,11 @@ struct DetailView: View {
             
             Text(book.author)
                 .font(.title)
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 1)
+            
+            Text("Added on \(formattedDate)")
+                .font(.subheadline)
                 .foregroundStyle(.secondary)
             
             Text(book.review)

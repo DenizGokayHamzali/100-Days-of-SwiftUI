@@ -21,6 +21,11 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title)
                                     .font(.headline)
+                                    .overlay(book.rating == 1 ? Image(systemName: "exclamationmark.triangle.fill")
+                                            .foregroundStyle(.red)
+                                            .offset(x: 25) : nil,
+                                         alignment: .trailing
+                                    )
                                 
                                 Text(book.author)
                                     .foregroundStyle(.secondary)

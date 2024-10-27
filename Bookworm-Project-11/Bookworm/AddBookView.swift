@@ -16,6 +16,12 @@ struct AddBookView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    private var isFormValid: Bool {
+        let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedAuthor = author.trimmingCharacters(in: .whitespacesAndNewlines)
+        return !(trimmedTitle.isEmpty) && !(trimmedAuthor.isEmpty)
+    }
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -45,6 +51,7 @@ struct AddBookView: View {
                         modelContext.insert(newBook)
                         dismiss()
                     }
+                    .disabled(!isFormValid)
                 }
             }
             .navigationTitle("Add Book")
