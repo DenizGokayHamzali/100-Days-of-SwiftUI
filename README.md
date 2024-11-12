@@ -70,9 +70,9 @@ For details: https://www.hackingwithswift.com/100/swiftui
 
 - ### [Milestone 3: HabitTracker](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/HabitTracker-Milestone-03) & [Day 47](https://www.hackingwithswift.com/100/swiftui/47)
 <div style="text-align: center;">
-  <img src="" width="250px" alt="" title=""/>
+  <img src="./Assets/HabitTracker.gif" width="250px" alt="HabitTracker Photo" title="HabitTracker"/>
 </div> 
-  Gifs will be here soon...
+
 #
 
 - ### [Project 10: CupcakeCorner](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/CupcakeCorner-Project-10) & [Day 49 - 52](https://www.hackingwithswift.com/100/swiftui/49)
