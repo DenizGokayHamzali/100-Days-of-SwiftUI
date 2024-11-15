@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4060186B2BDD796300795B65 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060186A2BDD796300795B65 /* AddView.swift */; };
+		40B85E5A2CE7E782002AE479 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B85E592CE7E77B002AE479 /* ExpenseItem.swift */; };
 		40D07C472BDAF43C00C422A2 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D07C462BDAF43C00C422A2 /* iExpenseApp.swift */; };
 		40D07C492BDAF43C00C422A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D07C482BDAF43C00C422A2 /* ContentView.swift */; };
 		40D07C4B2BDAF43D00C422A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D07C4A2BDAF43D00C422A2 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		4060186A2BDD796300795B65 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		40B85E592CE7E77B002AE479 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		40D07C432BDAF43C00C422A2 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D07C462BDAF43C00C422A2 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		40D07C482BDAF43C00C422A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 		40D07C452BDAF43C00C422A2 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
+				40B85E592CE7E77B002AE479 /* ExpenseItem.swift */,
 				40D07C462BDAF43C00C422A2 /* iExpenseApp.swift */,
 				40D07C482BDAF43C00C422A2 /* ContentView.swift */,
 				4060186A2BDD796300795B65 /* AddView.swift */,
@@ -143,6 +146,7 @@
 				40D07C492BDAF43C00C422A2 /* ContentView.swift in Sources */,
 				40D07C472BDAF43C00C422A2 /* iExpenseApp.swift in Sources */,
 				4060186B2BDD796300795B65 /* AddView.swift in Sources */,
+				40B85E5A2CE7E782002AE479 /* ExpenseItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
