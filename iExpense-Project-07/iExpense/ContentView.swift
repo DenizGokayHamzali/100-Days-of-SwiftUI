@@ -5,9 +5,15 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var expenses: [ExpenseItem]
+    @Query(sort: \ExpenseItem.name) var expenses: [ExpenseItem]
+    
+    @State private var sortOrder = [
+        SortDescriptor(\ExpenseItem.name),
+        SortDescriptor(\ExpenseItem.amount)
+    ]
     
     @State private var showingAddExpense = false
+    
     
     var personalExpenses: [ExpenseItem] {
         return expenses.filter { $0.type == "Personal"}
@@ -19,57 +25,32 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(personalExpenses) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                
-                                Text(item.type)
-                            }
-                            Spacer()
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(item.amount < 10 ? .green : item.amount < 100 ? .orange : .pink)
+            ExpenseItemsView(sortOrder: sortOrder)
+                .navigationTitle("iExpense")
+                .toolbar {
+                    NavigationLink("Add Expense", destination: AddView())
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker("Sort", selection: $sortOrder) {
+                            Text("Sort by Name")
+                                .tag([
+                                    SortDescriptor(\ExpenseItem.name),
+                                    SortDescriptor(\ExpenseItem.amount, order: .reverse)
+                                ])
+                            Text("Sort by Amount")
+                                .tag([
+                                    SortDescriptor(\ExpenseItem.amount, order: .reverse),
+                                    SortDescriptor(\ExpenseItem.name)
+                                ])
+                            
                         }
                     }
-                    .onDelete(perform: removePersonalItems)
                 }
-                
-                Section {
-                    ForEach(businessExpenses) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                
-                                Text(item.type)
-                            }
-                            Spacer()
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(item.amount < 10 ? .green : item.amount < 100 ? .orange : .pink)
-                        }
-                    }
-                    .onDelete(perform: removeBusinessItems)
-                }
-            }
-            .navigationTitle("iExpense")
-            .toolbar {
-                NavigationLink("Add Expense", destination: AddView(expenses: expenses))
-            }
+            
         }
-    }
-    
-    func removePersonalItems(at offsets: IndexSet) {
-        expenses.items.removeAll(where: { $0.type == "Personal" && offsets.contains(personalExpenses.firstIndex(of: $0)!) })
-    }
-    
-    func removeBusinessItems(at offsets: IndexSet) {
-        expenses.items.removeAll(where: { $0.type == "Business" && offsets.contains(businessExpenses.firstIndex(of: $0)!) })
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: ExpenseItem.self)
 }
