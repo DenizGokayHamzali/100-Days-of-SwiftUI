@@ -8,8 +8,8 @@ struct AddressView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemGroupedBackground) // Arka plan rengini belirtiyoruz
-                .edgesIgnoringSafeArea(.all) // Kenarlara kadar uzatıyoruz
+            Color(.systemGroupedBackground)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 Form {
@@ -41,11 +41,11 @@ struct AddressView: View {
                         .cornerRadius(10)
                         .padding(.horizontal)
                 }
-                .padding(.bottom, 20) // Butonun alttan boşluğu
+                .padding(.bottom, 20)
                 .alert("Thank you!", isPresented: $showingSaved) {
                    // Button("OK") { } Don't need this actually.
                 } message: {
-                    Text("...")
+                    Text("Your address has been saved.")
                 }
             }
         }
