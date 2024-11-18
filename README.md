@@ -77,11 +77,10 @@ For details: https://www.hackingwithswift.com/100/swiftui
 
 - ### [Project 10: CupcakeCorner](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/CupcakeCorner-Project-10) & [Day 49 - 52](https://www.hackingwithswift.com/100/swiftui/49)
 <div style="text-align: center;">
-  <img src="" width="250px" alt="" title=""/>
+  <img src="./Assets/CupcakeCorner.gif" width="250px" alt="CupcakeCorner Photo" title="CupcakeCorner"/>
 </div>
-  Gifs will be here soon...
-#
 
+#
 
 - ### [Project 11: Bookworm](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/Bookworm-Project-11) & [Day 53 - 56](https://www.hackingwithswift.com/100/swiftui/53)
 <div style="text-align: center;">
