@@ -7,11 +7,23 @@ struct ExpenseItemsView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query var expenses: [ExpenseItem]
+    var filterType: String
+    
+    var filteredExpenses: [ExpenseItem] {
+        switch filterType {
+        case "Personal":
+            return expenses.filter { $0.type == "Personal" }
+        case "Business":
+            return expenses.filter { $0.type == "Business" }
+        default:
+            return expenses
+        }
+    }
     
     var body: some View {
         List {
             Section {
-                ForEach(expenses) { item in
+                ForEach(filteredExpenses) { item in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -29,19 +41,20 @@ struct ExpenseItemsView: View {
         }
     }
     
-    init(sortOrder: [SortDescriptor<ExpenseItem>]) {
+    init(sortOrder: [SortDescriptor<ExpenseItem>], filterType: String) {
         _expenses = Query(sort: sortOrder)
+        self.filterType = filterType
     }
     
     func removeItems(at offsets: IndexSet) {
         for offset in offsets {
-            let item = expenses[offset]
+            let item = filteredExpenses[offset]
             modelContext.delete(item)
         }
     }
 }
 
 #Preview {
-    ExpenseItemsView(sortOrder: [SortDescriptor(\ExpenseItem.name)])
+    ExpenseItemsView(sortOrder: [SortDescriptor(\ExpenseItem.name)], filterType: "All")
         .modelContainer(for: ExpenseItem.self)
 }
