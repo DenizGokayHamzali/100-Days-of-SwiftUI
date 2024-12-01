@@ -5,7 +5,6 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \ExpenseItem.name) var expenses: [ExpenseItem]
     
     @State private var sortOrder = [
         SortDescriptor(\ExpenseItem.name),
@@ -16,15 +15,6 @@ struct ContentView: View {
     let filterOptions = ["All", "Personal", "Business"]
     
     @State private var showingAddExpense = false
-    
-    
-    var personalExpenses: [ExpenseItem] {
-        return expenses.filter { $0.type == "Personal"}
-    }
-    
-    var businessExpenses: [ExpenseItem] {
-        return expenses.filter { $0.type == "Business"}
-    }
     
     var body: some View {
         NavigationStack {
