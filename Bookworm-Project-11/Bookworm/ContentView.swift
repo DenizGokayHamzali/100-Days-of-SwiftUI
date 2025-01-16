@@ -14,22 +14,27 @@ struct ContentView: View {
             List {
                 ForEach(books) { book in
                     NavigationLink(value: book) {
-                        HStack {
+                        HStack(spacing: 16) {
                             EmojiRatingView(rating: book.rating)
                                 .font(.largeTitle)
                             
-                            VStack(alignment: .leading) {
+                            VStack(alignment: .leading, spacing: 6) {
                                 Text(book.title)
                                     .font(.headline)
+                                    .lineLimit(2)
                                     .overlay(book.rating == 1 ? Image(systemName: "exclamationmark.triangle.fill")
                                             .foregroundStyle(.red)
-                                            .offset(x: 25) : nil,
+                                            .offset(x: 25)
+                                            .transition(.scale) : nil,
                                          alignment: .trailing
                                     )
                                 
                                 Text(book.author)
+                                    .font(.subheadline)
                                     .foregroundStyle(.secondary)
+                                    .lineLimit(1)
                             }
+                            .padding(.vertical, 8)
                         }
                     }
                 }
