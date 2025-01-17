@@ -22,10 +22,14 @@ struct RatingView: View {
             
             ForEach(1..<maximumRating + 1, id: \.self) { number in
                 Button {
-                    rating = number
+                    withAnimation(.spring(response: 0.3)) {
+                        rating = number
+                    }
                 } label: {
                     image(for: number)
+                        .font(.title3)
                         .foregroundStyle(number > rating ? offColor : onColor)
+                        .scaleEffect(rating == number ? 1.2 : 1.0)
                 }
             }
         }

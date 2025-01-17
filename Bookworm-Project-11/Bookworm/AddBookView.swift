@@ -28,7 +28,9 @@ struct AddBookView: View {
                 Section {
                     TextField("Name of book", text: $title)
                     TextField("Author's name", text: $author)
-                    
+                }
+                
+                Section {
                     Picker("Genre", selection: $genre) {
                         ForEach(genres, id: \.self) {
                             Text($0)
@@ -36,8 +38,7 @@ struct AddBookView: View {
                     }
                 }
                 
-                Section("Write a review") {
-                    TextEditor(text: $review)
+                Section {
                     HStack {
                         Spacer()
                         RatingView(rating: $rating)
@@ -45,16 +46,28 @@ struct AddBookView: View {
                     }
                 }
                 
-                Section {
+                Section("Write a review") {
+                    TextEditor(text: $review)
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("Add Book").foregroundColor(.title).font(.title).fontWeight(.medium)
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
                         let newBook = Book(title: title, author: author, genre: genre, review: review, rating: rating)
                         modelContext.insert(newBook)
                         dismiss()
                     }
                     .disabled(!isFormValid)
+                    .foregroundStyle(.button)
                 }
             }
-            .navigationTitle("Add Book")
         }
     }
 }

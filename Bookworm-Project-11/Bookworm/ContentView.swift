@@ -40,19 +40,34 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteBooks)
             }
-            .navigationTitle("Bookworm")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: Book.self) { book in
                 DetailView(book: book)
             }
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Spacer()
+                        Text("Bookworm").foregroundColor(.title).font(.title).fontWeight(.medium)
+                        Spacer()
+                    }
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add Book", systemImage: "book.pages") {
+                    Button(action: {
                         showingAddScreen.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "book.pages")
+                                .foregroundColor(.button)
+                        }
+                        
                     }
                 }
                 
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
+                        .foregroundColor(.button)
                 }
             }
             .sheet(isPresented: $showingAddScreen) {

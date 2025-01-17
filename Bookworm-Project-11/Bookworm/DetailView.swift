@@ -19,35 +19,46 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView {
-            ZStack(alignment: .bottomTrailing) {
-                Image(book.genre)
-                    .resizable()
-                    .scaledToFit()
+            VStack(spacing: 24) {
+                ZStack(alignment: .bottomTrailing) {
+                    Image(book.genre)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(radius: 10)
+                    
+                    Text(book.genre.uppercased())
+                        .font(.caption.bold())
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .foregroundStyle(.white)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Capsule())
+                        .padding(12)
+                }
                 
-                Text(book.genre.uppercased())
-                    .font(.caption)
-                    .fontWeight(.black)
-                    .padding(8)
-                    .foregroundStyle(.white)
-                    .background(.black.opacity(0.75))
-                    .clipShape(.capsule)
-                    .offset(x: -5, y: -5)
-            }
-            
-            Text(book.author)
-                .font(.title)
-                .foregroundStyle(.secondary)
-                .padding(.bottom, 1)
-            
-            Text("Added on \(formattedDate)")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-            
-            Text(book.review)
+                
+                VStack(spacing: 16) {
+                    Text(book.author)
+                        .font(.title2.bold())
+                        .foregroundStyle(.primary)
+                    
+                    Text("Added on \(formattedDate)")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .padding(.bottom, 8)
+                    
+                    Text(book.review)
+                        .font(.subheadline)
+                        .lineSpacing(8)
+                        .padding(.horizontal)
+                    
+                    RatingView(rating: .constant(book.rating))
+                        .font(.title)
+                        .padding(.top, 8)
+                }
                 .padding()
-            
-            RatingView(rating: .constant(book.rating))
-                .font(.largeTitle)
+            }
         }
         .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
