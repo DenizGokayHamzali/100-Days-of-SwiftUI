@@ -8,6 +8,7 @@ struct BookwormApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(.button)
         }
         .modelContainer(for: Book.self)
     }

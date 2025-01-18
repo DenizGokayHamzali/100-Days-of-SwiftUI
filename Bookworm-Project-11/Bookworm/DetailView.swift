@@ -70,8 +70,11 @@ struct DetailView: View {
             Text("Are you sure?")
         }
         .toolbar {
-            Button("Delete this book", systemImage: "trash") {
+            Button(action: {
                 showingDeleteAlert = true
+            }) {
+                Image(systemName: "trash")
+                    .foregroundColor(.button)
             }
         }
     }

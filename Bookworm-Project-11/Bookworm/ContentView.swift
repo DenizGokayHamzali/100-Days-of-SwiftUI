@@ -23,10 +23,10 @@ struct ContentView: View {
                                     .font(.headline)
                                     .lineLimit(2)
                                     .overlay(book.rating == 1 ? Image(systemName: "exclamationmark.triangle.fill")
-                                            .foregroundStyle(.red)
-                                            .offset(x: 25)
-                                            .transition(.scale) : nil,
-                                         alignment: .trailing
+                                        .foregroundStyle(.red)
+                                        .offset(x: 25)
+                                        .transition(.scale) : nil,
+                                             alignment: .trailing
                                     )
                                 
                                 Text(book.author)
@@ -47,9 +47,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Spacer()
                         Text("Bookworm").foregroundColor(.title).font(.title).fontWeight(.medium)
-                        Spacer()
                     }
                 }
                 
@@ -61,7 +59,6 @@ struct ContentView: View {
                             Image(systemName: "book.pages")
                                 .foregroundColor(.button)
                         }
-                        
                     }
                 }
                 
