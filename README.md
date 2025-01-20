@@ -84,7 +84,7 @@ For details: https://www.hackingwithswift.com/100/swiftui
 
 - ### [Project 11: Bookworm](https://github.com/DenizGokayHamzali/100-Days-of-SwiftUI/tree/main/Bookworm-Project-11) & [Day 53 - 56](https://www.hackingwithswift.com/100/swiftui/53)
 <div style="text-align: center;">
-  <img src="" width="250px" alt="" title=""/>
+  <img src="./Assets/Bookworm.gif" width="250px" alt="Bookworm Photo" title="Bookworm"/>
 </div>
-  Gifs will be here soon...
+  
 #
